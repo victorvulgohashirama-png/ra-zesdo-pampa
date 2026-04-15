@@ -8,10 +8,9 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  color: #333;
 }
 
-/* HOME COM FAIXAS */
+/* HOME */
 .hero {
   height: 100vh;
   display: flex;
@@ -32,20 +31,22 @@ body {
   );
 }
 
-/* MAPA (ESQUERDA) */
+/* MAPA */
 .mapa {
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 80px;
+  width: 90px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-/* GAÚCHO (DIREITA) */
+/* GAÚCHO */
 .gaucho {
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 80px;
+  width: 100px;
 }
 
 /* BOTÃO */
@@ -100,13 +101,19 @@ h2 {
 
 .card img {
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
 }
 
 .card-content {
   padding: 15px;
   text-align: center;
+}
+
+.preco {
+  font-weight: bold;
+  color: #2e7d32;
+  margin: 10px 0;
 }
 
 footer {
@@ -124,11 +131,8 @@ footer {
 <!-- HOME -->
 <div class="hero">
 
-  <!-- MAPA RS -->
-  <img class="mapa" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Rio_Grande_do_Sul_in_Brazil.svg/512px-Rio_Grande_do_Sul_in_Brazil.svg.png">
-
-  <!-- GAÚCHO -->
-  <img class="gaucho" src="https://cdn-icons-png.flaticon.com/512/616/616490.png">
+  <img class="mapa" src="mapa.png">
+  <img class="gaucho" src="gaucho.png">
 
   <h1>🌎 Raízes do Pampa</h1>
   <p>Tradição gaúcha conectada ao mundo</p>
@@ -143,8 +147,8 @@ footer {
 <section>
 <h2>Sobre nós</h2>
 <p>
-O Raízes do Pampa é um projeto que conecta artesãos do Rio Grande do Sul ao mercado global,
-utilizando tecnologia, redes sociais e plataformas digitais.
+O Raízes do Pampa conecta artesãos do Rio Grande do Sul ao mercado global,
+utilizando tecnologia e plataformas digitais para expandir a cultura gaúcha.
 </p>
 </section>
 
@@ -155,28 +159,31 @@ utilizando tecnologia, redes sociais e plataformas digitais.
 <div class="produtos">
 
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1604908176997-431aa0f7b0f0">
+    <img src="cuia.png">
     <div class="card-content">
       <h3>Cuia artesanal</h3>
       <p>Feita à mão</p>
+      <div class="preco">R$ 49,90</div>
       <button class="btn">Comprar</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+    <img src="poncho.png">
     <div class="card-content">
       <h3>Poncho gaúcho</h3>
       <p>Tradição e estilo</p>
+      <div class="preco">R$ 129,90</div>
       <button class="btn">Comprar</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1616627981474-5d8e0f4d2f5d">
+    <img src="couro.png">
     <div class="card-content">
-      <h3>Arte em couro</h3>
-      <p>Produção local</p>
+      <h3>Faca artesanal</h3>
+      <p>Produção em couro</p>
+      <div class="preco">R$ 89,90</div>
       <button class="btn">Comprar</button>
     </div>
   </div>
