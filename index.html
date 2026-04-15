@@ -1,129 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Raízes do Pampa</title>
+<meta charset="UTF-8">
+<title>Raízes do Pampa</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #333;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
 
-    /* FUNDO COM FAIXAS DA BANDEIRA */
-    body::before {
-      content: "";
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        135deg,
-        #2e7d32 0%,
-        #2e7d32 33%,
-        #b71c1c 33%,
-        #b71c1c 66%,
-        #fbc02d 66%,
-        #fbc02d 100%
-      );
-      z-index: -1;
-      opacity: 0.2;
-    }
+/* HOME COM FAIXAS */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
 
-    header {
-      text-align: center;
-      padding: 30px;
-      background: rgba(0,0,0,0.6);
-      color: white;
-    }
+  background: linear-gradient(
+    135deg,
+    #2e7d32 0%,
+    #2e7d32 33%,
+    #b71c1c 33%,
+    #b71c1c 66%,
+    #fbc02d 66%,
+    #fbc02d 100%
+  );
+}
 
-    section {
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-    }
+/* MAPA (ESQUERDA) */
+.mapa {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+}
 
-    h2 {
-      border-left: 6px solid #2e7d32;
-      padding-left: 10px;
-    }
+/* GAÚCHO (DIREITA) */
+.gaucho {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+}
 
-    .produtos {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+/* BOTÃO */
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #b71c1c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      width: 220px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: 0.3s;
-    }
+.btn:hover {
+  background: #7f0000;
+}
 
-    .card:hover {
-      transform: scale(1.05);
-    }
+/* SEÇÕES */
+section {
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+}
 
-    .card h3 {
-      color: #b71c1c;
-    }
+h2 {
+  border-left: 6px solid #2e7d32;
+  padding-left: 10px;
+}
 
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #2e7d32;
-      color: white;
-      margin-top: 30px;
-    }
+/* PRODUTOS */
+.produtos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-  </style>
+.card {
+  background: white;
+  border-radius: 15px;
+  width: 250px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #2e7d32;
+  color: white;
+}
+
+</style>
 </head>
 
 <body>
 
-<header>
+<!-- HOME -->
+<div class="hero">
+
+  <!-- MAPA RS -->
+  <img class="mapa" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Rio_Grande_do_Sul_in_Brazil.svg/512px-Rio_Grande_do_Sul_in_Brazil.svg.png">
+
+  <!-- GAÚCHO -->
+  <img class="gaucho" src="https://cdn-icons-png.flaticon.com/512/616/616490.png">
+
   <h1>🌎 Raízes do Pampa</h1>
   <p>Tradição gaúcha conectada ao mundo</p>
-</header>
 
+  <button class="btn" onclick="document.getElementById('produtos').scrollIntoView()">
+    Ver Produtos
+  </button>
+
+</div>
+
+<!-- SOBRE -->
 <section>
-  <h2>Sobre nós</h2>
-  <p>
-    O Raízes do Pampa valoriza o artesanato gaúcho e conecta produtores locais
-    ao mercado global através da tecnologia e da internet.
-  </p>
+<h2>Sobre nós</h2>
+<p>
+O Raízes do Pampa é um projeto que conecta artesãos do Rio Grande do Sul ao mercado global,
+utilizando tecnologia, redes sociais e plataformas digitais.
+</p>
 </section>
 
-<section>
-  <h2>Produtos</h2>
-  <div class="produtos">
-    <div class="card">
-      <h3>🧉 Cuia artesanal</h3>
-      <p>Produção tradicional do RS</p>
-    </div>
-    <div class="card">
-      <h3>🧥 Poncho gaúcho</h3>
-      <p>Estilo e tradição</p>
-    </div>
-    <div class="card">
-      <h3>🐄 Arte em couro</h3>
-      <p>Feito por artesãos locais</p>
+<!-- PRODUTOS -->
+<section id="produtos">
+<h2>Produtos</h2>
+
+<div class="produtos">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1604908176997-431aa0f7b0f0">
+    <div class="card-content">
+      <h3>Cuia artesanal</h3>
+      <p>Feita à mão</p>
+      <button class="btn">Comprar</button>
     </div>
   </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+    <div class="card-content">
+      <h3>Poncho gaúcho</h3>
+      <p>Tradição e estilo</p>
+      <button class="btn">Comprar</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1616627981474-5d8e0f4d2f5d">
+    <div class="card-content">
+      <h3>Arte em couro</h3>
+      <p>Produção local</p>
+      <button class="btn">Comprar</button>
+    </div>
+  </div>
+
+</div>
 </section>
 
+<!-- CONTATO -->
 <section>
-  <h2>Contato</h2>
-  <p>📱 Instagram: @raizesdopampa</p>
+<h2>Contato</h2>
+<p>📱 Instagram: @raizesdopampa</p>
 </section>
 
 <footer>
-  <p>Projeto escolar - Globalização e Glocalização</p>
+<p>Projeto escolar - Globalização e Glocalização</p>
 </footer>
 
 </body>
