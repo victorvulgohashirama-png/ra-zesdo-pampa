@@ -5,23 +5,11 @@
 <title>Raízes do Pampa</title>
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-}
-
-/* ANIMAÇÃO */
-.fade-in {
-  animation: fadeIn 1.2s ease-in;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
 }
 
 /* HERO */
@@ -60,10 +48,10 @@ body {
   width: 100px;
 }
 
-/* BOTÃO */
+/* BOTÕES */
 .btn {
-  margin-top: 20px;
-  padding: 12px 25px;
+  margin: 10px;
+  padding: 10px 20px;
   background: #b71c1c;
   color: white;
   border: none;
@@ -71,21 +59,7 @@ body {
   cursor: pointer;
 }
 
-.btn:hover {
-  background: #7f0000;
-}
-
-/* SEÇÕES */
-section {
-  padding: 40px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-h2 {
-  border-left: 6px solid #2e7d32;
-  padding-left: 10px;
-}
+.btn:hover { background: #7f0000; }
 
 /* PRODUTOS */
 .produtos {
@@ -101,11 +75,6 @@ h2 {
   width: 250px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
 }
 
 .card img {
@@ -119,10 +88,25 @@ h2 {
   text-align: center;
 }
 
-.preco {
-  font-weight: bold;
-  color: #2e7d32;
-  margin: 10px 0;
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content {
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  width:90%;
+  max-width:600px;
 }
 
 /* CARRINHO */
@@ -141,7 +125,7 @@ h2 {
   position: fixed;
   bottom: 70px;
   right: 20px;
-  width: 250px;
+  width: 260px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -149,89 +133,137 @@ h2 {
   padding: 15px;
 }
 
-.msg {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #2e7d32;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  display: none;
-}
-
-/* FOOTER */
 footer {
-  text-align: center;
-  padding: 15px;
-  background: #2e7d32;
-  color: white;
+  text-align:center;
+  padding:10px;
+  background:#2e7d32;
+  color:white;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero fade-in">
+<div class="hero">
+<img class="mapa" src="https://img.freepik.com/vetores-premium/mapa-3d-isometrico-do-rio-grande-do-sul-com-bandeira_97886-18954.jpg">
+<img class="gaucho" src="https://i.pinimg.com/originals/49/80/96/498096484cd2155dc6a2747ce353628c.jpg">
 
-  <img class="mapa" src="https://img.freepik.com/vetores-premium/mapa-3d-isometrico-do-rio-grande-do-sul-com-bandeira_97886-18954.jpg">
-  <img class="gaucho" src="https://i.pinimg.com/originals/49/80/96/498096484cd2155dc6a2747ce353628c.jpg">
+<h1>🌎 Raízes do Pampa</h1>
+<p>Tradição gaúcha conectada ao mundo</p>
 
-  <h1>🌎 Raízes do Pampa</h1>
-  <p>Tradição gaúcha conectada ao mundo</p>
-
-  <button class="btn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
-    Ver Produtos
-  </button>
-
+<button class="btn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+Ver Produtos
+</button>
 </div>
 
-<section class="fade-in">
-<h2>Sobre nós</h2>
-<p>
-O Raízes do Pampa conecta artesãos do Rio Grande do Sul ao mercado global.
-</p>
-</section>
-
-<section id="produtos" class="fade-in">
+<section id="produtos">
 <h2>Produtos</h2>
 
 <div class="produtos">
 
-  <div class="card">
-    <img src="https://product-hub-prd.madeiramadeira.com.br/378599561/images/659ab66b-7ae6-404f-b0a3-7f0693ff96ea9096310981059040PAISAG5jpg.jpg">
-    <div class="card-content">
-      <h3>Cuia artesanal</h3>
-      <div class="preco">R$ 49,90</div>
-      <button class="btn" onclick="add('Cuia')">Comprar</button>
-    </div>
-  </div>
+<div class="card">
+<img src="https://product-hub-prd.madeiramadeira.com.br/378599561/images/659ab66b-7ae6-404f-b0a3-7f0693ff96ea9096310981059040PAISAG5jpg.jpg">
+<div class="card-content">
+<h3>Cuia artesanal</h3>
+<button class="btn" onclick="abrirModal('cuias')">Ver opções</button>
+</div>
+</div>
 
-  <div class="card">
-    <img src="https://s-media-cache-ak0.pinimg.com/736x/e0/b1/c3/e0b1c339240ac4f121dea60d78ba89cb--mate-argentina.jpg">
-    <div class="card-content">
-      <h3>Trajes Gaúchos</h3>
-      <div class="preco">R$ 129,90</div>
-      <button class="btn" onclick="add('Trajes')">Comprar</button>
-    </div>
-  </div>
+<div class="card">
+<img src="https://s-media-cache-ak0.pinimg.com/736x/e0/b1/c3/e0b1c339240ac4f121dea60d78ba89cb--mate-argentina.jpg">
+<div class="card-content">
+<h3>Trajes Gaúchos</h3>
+<button class="btn" onclick="abrirModal('trajes')">Ver opções</button>
+</div>
+</div>
 
-  <div class="card">
-    <img src="https://carrefourbr.vtexassets.com/arquivos/ids/22403872/Faca-Gaucha-Churrasco-Aco-Carbono-Fosfatizada-10-Artesanal.jpg?v=637641102745370000">
-    <div class="card-content">
-      <h3>Ferramentas artesanais</h3>
-      <div class="preco">R$ 89,90</div>
-      <button class="btn" onclick="add('Ferramentas')">Comprar</button>
-    </div>
-  </div>
+<div class="card">
+<img src="https://carrefourbr.vtexassets.com/arquivos/ids/22403872/Faca-Gaucha-Churrasco-Aco-Carbono-Fosfatizada-10-Artesanal.jpg?v=637641102745370000">
+<div class="card-content">
+<h3>Ferramentas</h3>
+<button class="btn" onclick="abrirModal('ferramentas')">Ver opções</button>
+</div>
+</div>
 
 </div>
 </section>
 
-<footer>
-<p>Do Sul ao mundo</p>
-</footer>
+<!-- MODAIS -->
+
+<div class="modal" id="trajes">
+<div class="modal-content">
+<h2>Trajes</h2>
+<button class="btn" onclick="fecharModal()">⬅ Voltar</button>
+
+<div class="produtos">
+<div class="card">
+<img src="https://4.bp.blogspot.com/-bJXFNIWhQuc/TnC7lQbIgvI/AAAAAAAABVc/vEzYxtEEq4Y/s1600/Pilcha_01.JPG">
+<h3>Pilcha</h3>
+<button class="btn" onclick="add('Pilcha',129.90)">Comprar</button>
+</div>
+
+<div class="card">
+<img src="https://s-media-cache-ak0.pinimg.com/736x/e0/b1/c3/e0b1c339240ac4f121dea60d78ba89cb--mate-argentina.jpg">
+<h3>Poncho</h3>
+<button class="btn" onclick="add('Poncho',129.90)">Comprar</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal" id="cuias">
+<div class="modal-content">
+<h2>Cuias</h2>
+<button class="btn" onclick="fecharModal()">⬅ Voltar</button>
+
+<div class="produtos">
+<div class="card">
+<img src="https://product-hub-prd.madeiramadeira.com.br/378599561/images/659ab66b-7ae6-404f-b0a3-7f0693ff96ea9096310981059040PAISAG5jpg.jpg">
+<h3>Cuia Tradicional</h3>
+<button class="btn" onclick="add('Cuia Tradicional',49.90)">Comprar</button>
+</div>
+
+<div class="card">
+<img src="https://images.tcdn.com.br/img/img_prod/769607/kit_terere_cuia_terere_ceramica_estilo_guampa_e_bomba_inox_mola_4151_1_20200709142246.jpg">
+<h3>Cuia Tereré</h3>
+<button class="btn" onclick="add('Cuia Tereré',59.90)">Comprar</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal" id="ferramentas">
+<div class="modal-content">
+<h2>Ferramentas</h2>
+<button class="btn" onclick="fecharModal()">⬅ Voltar</button>
+
+<div class="produtos">
+<div class="card">
+<img src="https://carrefourbr.vtexassets.com/arquivos/ids/22403872/Faca-Gaucha-Churrasco-Aco-Carbono-Fosfatizada-10-Artesanal.jpg?v=637641102745370000">
+<h3>Faca</h3>
+<button class="btn" onclick="add('Faca',89.90)">Comprar</button>
+</div>
+
+<div class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_719791-MLB31145322860_062019-F.jpg">
+<h3>Pilão</h3>
+<button class="btn" onclick="add('Pilão',79.90)">Comprar</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- PIX -->
+<div class="modal" id="pixModal">
+  <div class="modal-content">
+    <h2>Pagamento via Pix</h2>
+    <p>Total: R$ <span id="pixValor">0.00</span></p>
+    <p>Chave Pix:<br><strong>raizesdopampa@pix.com</strong></p>
+
+    <button class="btn" onclick="confirmarPagamento()">Confirmar Pagamento</button>
+    <button class="btn" onclick="fecharModal()">Cancelar</button>
+  </div>
+</div>
 
 <!-- CARRINHO -->
 <div class="carrinho-btn" onclick="toggleCarrinho()">
@@ -241,34 +273,84 @@ O Raízes do Pampa conecta artesãos do Rio Grande do Sul ao mercado global.
 <div class="carrinho-box" id="box">
 <h4>Carrinho</h4>
 <ul id="lista"></ul>
+
+<p><strong>Total: R$ <span id="valorTotal">0.00</span></strong></p>
+
+<button class="btn" onclick="finalizar()">Finalizar Compra</button>
 </div>
 
-<div class="msg" id="msg">✔ Produto adicionado</div>
-
 <script>
-let total = 0;
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-function add(nome) {
-  total++;
-  document.getElementById("total").innerText = total;
-
-  let item = document.createElement("li");
-  item.innerText = nome;
-  document.getElementById("lista").appendChild(item);
-
-  let msg = document.getElementById("msg");
-  msg.style.display = "block";
-
-  setTimeout(() => {
-    msg.style.display = "none";
-  }, 1500);
+function salvar(){
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
 }
 
-function toggleCarrinho() {
+function atualizar(){
+  let lista = document.getElementById("lista");
+  lista.innerHTML = "";
+  let total = 0;
+
+  carrinho.forEach((item, i)=>{
+    total += item.preco;
+
+    let li = document.createElement("li");
+    li.innerHTML = `${item.nome} - R$ ${item.preco.toFixed(2)} <button onclick="remover(${i})">❌</button>`;
+    lista.appendChild(li);
+  });
+
+  document.getElementById("total").innerText = carrinho.length;
+  document.getElementById("valorTotal").innerText = total.toFixed(2);
+
+  salvar();
+}
+
+function add(nome, preco){
+  carrinho.push({nome, preco});
+  atualizar();
+}
+
+function remover(i){
+  carrinho.splice(i,1);
+  atualizar();
+}
+
+function toggleCarrinho(){
   let box = document.getElementById("box");
-  box.style.display = box.style.display === "block" ? "none" : "block";
+  box.style.display = box.style.display==="block"?"none":"block";
 }
+
+function abrirModal(id){
+  document.getElementById(id).style.display="flex";
+}
+
+function fecharModal(){
+  document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
+}
+
+function finalizar(){
+  if(carrinho.length===0){
+    alert("Carrinho vazio!");
+    return;
+  }
+
+  let total = carrinho.reduce((s,i)=>s+i.preco,0);
+  document.getElementById("pixValor").innerText = total.toFixed(2);
+  abrirModal("pixModal");
+}
+
+function confirmarPagamento(){
+  alert("Pagamento aprovado! 🎉");
+
+  carrinho = [];
+  atualizar();
+  fecharModal();
+}
+
+window.onload = atualizar;
 </script>
+
+<footer>Do Sul ao mundo</footer>
 
 </body>
 </html>
