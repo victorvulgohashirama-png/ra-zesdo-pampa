@@ -5,12 +5,26 @@
 <title>Raízes do Pampa</title>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
-/* HOME */
+/* ANIMAÇÃO */
+.fade-in {
+  animation: fadeIn 1.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* HERO */
 .hero {
   height: 100vh;
   display: flex;
@@ -32,18 +46,18 @@ body {
   );
 }
 
-/* MAPA */
 .mapa {
   position: absolute;
   top: 20px;
   left: 20px;
+  width: 90px;
 }
 
-/* GAÚCHO */
 .gaucho {
   position: absolute;
   top: 20px;
   right: 20px;
+  width: 100px;
 }
 
 /* BOTÃO */
@@ -55,7 +69,6 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
 }
 
 .btn:hover {
@@ -88,6 +101,17 @@ h2 {
   width: 250px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 }
 
 .card-content {
@@ -101,6 +125,43 @@ h2 {
   margin: 10px 0;
 }
 
+/* CARRINHO */
+.carrinho-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #b71c1c;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.carrinho-box {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 250px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: none;
+  padding: 15px;
+}
+
+.msg {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2e7d32;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: none;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 15px;
@@ -112,91 +173,102 @@ footer {
 
 <body>
 
-<!-- HOME -->
-<div class="hero">
+<div class="hero fade-in">
 
-  <!-- MAPA -->
-  <img class="mapa" src="mapa.jpeg">
-  <!-- dimensões -->
-  width="90" height="90"
-
-  <!-- GAÚCHO -->
-  <img class="gaucho" src="gaucho.jpeg">
-  <!-- dimensões -->
-  width="100" height="100"
+  <img class="mapa" src="https://img.freepik.com/vetores-premium/mapa-3d-isometrico-do-rio-grande-do-sul-com-bandeira_97886-18954.jpg">
+  <img class="gaucho" src="https://i.pinimg.com/originals/49/80/96/498096484cd2155dc6a2747ce353628c.jpg">
 
   <h1>🌎 Raízes do Pampa</h1>
   <p>Tradição gaúcha conectada ao mundo</p>
 
-  <button class="btn" onclick="document.getElementById('produtos').scrollIntoView()">
+  <button class="btn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
     Ver Produtos
   </button>
 
 </div>
 
-<!-- SOBRE -->
-<section>
+<section class="fade-in">
 <h2>Sobre nós</h2>
 <p>
-O Raízes do Pampa conecta artesãos do Rio Grande do Sul ao mercado global
-utilizando tecnologia e plataformas digitais.
+O Raízes do Pampa conecta artesãos do Rio Grande do Sul ao mercado global.
 </p>
 </section>
 
-<!-- PRODUTOS -->
-<section id="produtos">
+<section id="produtos" class="fade-in">
 <h2>Produtos</h2>
 
 <div class="produtos">
 
   <div class="card">
-    <img src="cuia.jpeg">
-    <!-- dimensões -->
-    width="250" height="180"
+    <img src="https://product-hub-prd.madeiramadeira.com.br/378599561/images/659ab66b-7ae6-404f-b0a3-7f0693ff96ea9096310981059040PAISAG5jpg.jpg">
     <div class="card-content">
       <h3>Cuia artesanal</h3>
-      <p>Feita à mão</p>
       <div class="preco">R$ 49,90</div>
-      <button class="btn">Comprar</button>
+      <button class="btn" onclick="add('Cuia')">Comprar</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="poncho.jpeg">
-    <!-- dimensões -->
-    width="250" height="180"
+    <img src="https://s-media-cache-ak0.pinimg.com/736x/e0/b1/c3/e0b1c339240ac4f121dea60d78ba89cb--mate-argentina.jpg">
     <div class="card-content">
-      <h3>Poncho gaúcho</h3>
-      <p>Tradição e estilo</p>
+      <h3>Trajes Gaúchos</h3>
       <div class="preco">R$ 129,90</div>
-      <button class="btn">Comprar</button>
+      <button class="btn" onclick="add('Trajes')">Comprar</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="couro.jpeg">
-    <!-- dimensões -->
-    width="250" height="180"
+    <img src="https://carrefourbr.vtexassets.com/arquivos/ids/22403872/Faca-Gaucha-Churrasco-Aco-Carbono-Fosfatizada-10-Artesanal.jpg?v=637641102745370000">
     <div class="card-content">
-      <h3>Faca artesanal</h3>
-      <p>Produção em couro</p>
+      <h3>Ferramentas artesanais</h3>
       <div class="preco">R$ 89,90</div>
-      <button class="btn">Comprar</button>
+      <button class="btn" onclick="add('Ferramentas')">Comprar</button>
     </div>
   </div>
 
 </div>
 </section>
 
-<!-- CONTATO -->
-<section>
-<h2>Contato</h2>
-<p>📱 Instagram: @raizesdopampa</p>
-</section>
-
 <footer>
 <p>Do Sul ao mundo</p>
 </footer>
+
+<!-- CARRINHO -->
+<div class="carrinho-btn" onclick="toggleCarrinho()">
+🛒 <span id="total">0</span>
+</div>
+
+<div class="carrinho-box" id="box">
+<h4>Carrinho</h4>
+<ul id="lista"></ul>
+</div>
+
+<div class="msg" id="msg">✔ Produto adicionado</div>
+
+<script>
+let total = 0;
+
+function add(nome) {
+  total++;
+  document.getElementById("total").innerText = total;
+
+  let item = document.createElement("li");
+  item.innerText = nome;
+  document.getElementById("lista").appendChild(item);
+
+  let msg = document.getElementById("msg");
+  msg.style.display = "block";
+
+  setTimeout(() => {
+    msg.style.display = "none";
+  }, 1500);
+}
+
+function toggleCarrinho() {
+  let box = document.getElementById("box");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
 
 </body>
 </html>
