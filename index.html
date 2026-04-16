@@ -19,6 +19,7 @@ body {
   flex-direction: column;
   text-align: center;
   color: white;
+  position: relative;
 
   background: linear-gradient(
     135deg,
@@ -37,6 +38,8 @@ body {
   top: 20px;
   left: 20px;
   width: 90px;
+  height: 90px;
+  object-fit: cover;
 }
 
 /* GAÚCHO */
@@ -45,6 +48,8 @@ body {
   top: 20px;
   right: 20px;
   width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
 /* BOTÃO */
@@ -56,8 +61,6 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
-  transition: 0.3s;
 }
 
 .btn:hover {
@@ -79,9 +82,9 @@ h2 {
 /* PRODUTOS */
 .produtos {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
 }
 
 .card {
@@ -90,11 +93,6 @@ h2 {
   width: 250px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
 }
 
 .card img {
@@ -120,17 +118,15 @@ footer {
   background: #2e7d32;
   color: white;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
 <div class="hero">
 
-  <img class="mapa" src="mapa.png">
-  <img class="gaucho" src="gaucho.png">
+  <img class="mapa" src="mapa.jpg">
+  <img class="gaucho" src="gaucho.jpg">
 
   <h1>🌎 Raízes do Pampa</h1>
   <p>Tradição gaúcha conectada ao mundo</p>
@@ -141,23 +137,21 @@ footer {
 
 </div>
 
-<!-- SOBRE -->
 <section>
 <h2>Sobre nós</h2>
 <p>
-O Raízes do Pampa conecta artesãos do Rio Grande do Sul ao mercado global,
+O Raízes do Pampa conecta artesãos do Rio Grande do Sul ao mercado global
 utilizando tecnologia e plataformas digitais.
 </p>
 </section>
 
-<!-- PRODUTOS -->
 <section id="produtos">
 <h2>Produtos</h2>
 
 <div class="produtos">
 
   <div class="card">
-    <img src="cuia.png">
+    <img src="cuia.jpg">
     <div class="card-content">
       <h3>Cuia artesanal</h3>
       <p>Feita à mão</p>
@@ -167,7 +161,7 @@ utilizando tecnologia e plataformas digitais.
   </div>
 
   <div class="card">
-    <img src="poncho.png">
+    <img src="poncho.jpg">
     <div class="card-content">
       <h3>Poncho gaúcho</h3>
       <p>Tradição e estilo</p>
@@ -177,7 +171,7 @@ utilizando tecnologia e plataformas digitais.
   </div>
 
   <div class="card">
-    <img src="couro.png">
+    <img src="couro.jpg">
     <div class="card-content">
       <h3>Faca artesanal</h3>
       <p>Produção em couro</p>
@@ -189,14 +183,13 @@ utilizando tecnologia e plataformas digitais.
 </div>
 </section>
 
-<!-- CONTATO -->
 <section>
 <h2>Contato</h2>
 <p>📱 Instagram: @raizesdopampa</p>
 </section>
 
 <footer>
-<p>Projeto escolar - Globalização e Glocalização</p>
+<p>Do Sul ao mundo</p>
 </footer>
 
 </body>
